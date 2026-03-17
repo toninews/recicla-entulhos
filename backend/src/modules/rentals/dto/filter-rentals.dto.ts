@@ -5,17 +5,21 @@ import { IsEnum, IsOptional, IsString, IsUUID, MaxLength } from 'class-validator
 export class FilterRentalsDto {
   @ApiPropertyOptional({ enum: RentalStatus })
   @IsOptional()
-  @IsEnum(RentalStatus)
+  @IsEnum(RentalStatus, {
+    message: 'O status informado para filtro é inválido.',
+  })
   status?: RentalStatus;
 
   @ApiPropertyOptional()
   @IsOptional()
-  @IsUUID()
+  @IsUUID('4', { message: 'A caçamba informada para filtro é inválida.' })
   dumpsterId?: string;
 
   @ApiPropertyOptional()
   @IsOptional()
-  @IsString()
-  @MaxLength(120)
+  @IsString({ message: 'O filtro de cliente deve ser um texto válido.' })
+  @MaxLength(120, {
+    message: 'O filtro de cliente deve ter no máximo 120 caracteres.',
+  })
   customerName?: string;
 }
