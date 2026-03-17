@@ -346,7 +346,3 @@ Esses pontos podem ser evoluídos sem necessidade de reestruturar a base atual.
 - Etapa 2 concluída: backend completo
 - Etapa 3 concluída: frontend funcional
 - Etapa 4 concluída: integração, dockerização e documentação
-
-## Referências
-
-- Arquitetura inicial: `docs/etapa-1-arquitetura.md`
