@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum DumpsterStatus {
+  AVAILABLE
+  RENTED
+}
+
+enum RentalStatus {
+  ACTIVE
+  FINISHED
+}
+
+model Dumpster {
+  id           String          @id @default(uuid())
+  serialNumber String          @unique
+  color        String
+  status       DumpsterStatus  @default(AVAILABLE)
+  rentals      Rental[]
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+}
+
+model Rental {
+  id           String       @id @default(uuid())
+  customerName String
+  customerPhone String
+  zipCode      String
+  street       String
+  number       String
+  complement   String?
+  district     String
+  city         String
+  state        String
+  reference    String?
+  startDate    DateTime
+  endDate      DateTime?
+  finishedAt   DateTime?
+  notes        String?
+  status       RentalStatus @default(ACTIVE)
+  dumpsterId   String
+  dumpster     Dumpster     @relation(fields: [dumpsterId], references: [id])
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  @@index([dumpsterId])
+  @@index([status])
+  @@index([customerName])
+}
