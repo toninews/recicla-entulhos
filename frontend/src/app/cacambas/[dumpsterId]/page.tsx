@@ -86,11 +86,7 @@ export default function EditDumpsterPage() {
                   <Link className="primary-button" href={`/alugueis/${dumpster.id}`}>
                     Alugar
                   </Link>
-                ) : (
-                  <span className="primary-button button-disabled" aria-disabled="true">
-                    Caçamba alugada
-                  </span>
-                )}
+                ) : null}
                 <Link className="secondary-button" href={`/historico/${dumpster.id}`}>
                   Histórico
                 </Link>
@@ -99,7 +95,7 @@ export default function EditDumpsterPage() {
 
             {dumpster.status === 'RENTED' ? (
               <p className="feedback-text">
-                Esta caçamba está alugada no momento. A edição fica bloqueada até o encerramento do aluguel.
+                Esta caçamba está em aluguel no momento. A edição fica bloqueada até o encerramento da locação.
               </p>
             ) : null}
 

@@ -1,5 +1,11 @@
-export function Logo() {
-  return (
+import Link from 'next/link';
+
+type LogoProps = {
+  href?: string;
+};
+
+export function Logo({ href }: LogoProps) {
+  const content = (
     <div className="logo-block">
       <div className="logo-icon" aria-hidden="true">
         <span className="logo-lid" />
@@ -13,4 +19,14 @@ export function Logo() {
       </div>
     </div>
   );
+
+  if (href) {
+    return (
+      <Link className="logo-link" href={href} aria-label="Ir para caçambas">
+        {content}
+      </Link>
+    );
+  }
+
+  return content;
 }

@@ -106,7 +106,7 @@ export default function DumpsterHistoryPage() {
             <thead>
               <tr>
                 <th>Cliente</th>
-                <th>Datas</th>
+                <th>Início / Encerramento</th>
                 <th>Endereço</th>
                 <th>Status</th>
               </tr>
@@ -119,7 +119,7 @@ export default function DumpsterHistoryPage() {
                     <br />
                     {formatPhone(rental.customerPhone)}
                   </td>
-                  <td data-label="Datas">
+                  <td data-label="Início / Encerramento">
                     <strong>Iniciado em {formatDateTime(rental.startDate)}</strong>
                     <br />
                     {rental.endDate ? (

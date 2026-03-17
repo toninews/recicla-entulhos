@@ -78,7 +78,7 @@ export default function HistoryPage() {
               <tr>
                 <th>Cliente</th>
                 <th>Caçamba</th>
-                <th>Datas</th>
+                <th>Início / Encerramento</th>
                 <th>Endereço</th>
                 <th>Status</th>
               </tr>
@@ -100,7 +100,7 @@ export default function HistoryPage() {
                       {rental.dumpster.serialNumber}
                     </Link>
                   </td>
-                  <td data-label="Datas">
+                  <td data-label="Início / Encerramento">
                     <strong>
                       Iniciado em {formatDateTime(rental.startDate)}
                     </strong>

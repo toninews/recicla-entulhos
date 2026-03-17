@@ -74,6 +74,11 @@ function formatPhone(value: string) {
   return `+${digits.slice(0, 2)} (${digits.slice(2, 4)}) ${digits.slice(4, 9)}-${digits.slice(9)}`;
 }
 
+function formatPlannedDate(value: string) {
+  const [year, month, day] = value.slice(0, 10).split('-').map(Number);
+  return new Date(year, month - 1, day).toLocaleDateString('pt-BR');
+}
+
 export default function RentalsPage() {
   const [rentals, setRentals] = useState<Rental[]>([]);
   const [availableDumpsters, setAvailableDumpsters] = useState<Dumpster[]>([]);
@@ -379,6 +384,7 @@ export default function RentalsPage() {
                   <th>Caçamba</th>
                   <th>Endereço</th>
                   <th>Início</th>
+                  <th>Término previsto</th>
                   <th>Status</th>
                   <th>Ações</th>
                 </tr>
@@ -402,6 +408,9 @@ export default function RentalsPage() {
                         dateStyle: 'short',
                         timeStyle: 'short',
                       })}
+                    </td>
+                    <td data-label="Término previsto">
+                      {rental.endDate ? formatPlannedDate(rental.endDate) : 'Sem previsão'}
                     </td>
                     <td data-label="Status">
                       <StatusBadge status={rental.status} />

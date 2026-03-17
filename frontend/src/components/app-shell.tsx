@@ -29,7 +29,7 @@ export function AppShell({ children, title, description }: AppShellProps) {
   return (
     <div className="dashboard-shell">
       <aside className="sidebar">
-        <Logo />
+        <Logo href="/cacambas" />
         <nav className="sidebar-nav">
           {links.map((link) => (
             <Link

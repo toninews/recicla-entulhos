@@ -67,7 +67,11 @@ export default function DumpstersPage() {
       setDumpsterToDelete(null);
       await loadDumpsters();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Não foi possível excluir a caçamba.');
+      const message =
+        err instanceof Error ? err.message : 'Não foi possível excluir a caçamba.';
+      setError(message);
+      showToast(message);
+      setDumpsterToDelete(null);
     }
   }
 
@@ -77,7 +81,7 @@ export default function DumpstersPage() {
   return (
     <AppShell
       title="Gestão de caçambas"
-      description="Cadastre, filtre e acompanhe a disponibilidade das caçambas."
+      description="Bem-vindo ao painel da Recicla Entulhos. Cadastre, filtre e acompanhe a disponibilidade das caçambas."
     >
       <section className="stats-strip">
         <article className="stat-card">
@@ -186,11 +190,7 @@ export default function DumpstersPage() {
                           <Link className="mini-button" href={`/alugueis/${dumpster.id}`}>
                             Alugar
                           </Link>
-                        ) : (
-                          <span className="mini-button disabled" aria-disabled="true">
-                            Alugada
-                          </span>
-                        )}
+                        ) : null}
                         <Link className="mini-button" href={`/historico/${dumpster.id}`}>
                           Histórico
                         </Link>
@@ -202,11 +202,7 @@ export default function DumpstersPage() {
                           >
                             Excluir
                           </button>
-                        ) : (
-                          <span className="mini-button danger disabled" aria-disabled="true">
-                            Em aluguel
-                          </span>
-                        )}
+                        ) : null}
                       </div>
                     </td>
                   </tr>
@@ -214,6 +210,8 @@ export default function DumpstersPage() {
               </tbody>
             </table>
           )}
+
+          {error ? <p className="feedback-text error">{error}</p> : null}
       </section>
 
       <ConfirmModal
