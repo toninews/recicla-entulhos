@@ -188,6 +188,15 @@ recicla-entulhos/
 cp .env.example .env
 ```
 
+As credenciais padrão do PostgreSQL já estão definidas no arquivo de exemplo:
+
+- Banco: `recicla_entulhos`
+- Usuário: `postgres`
+- Senha: `postgres`
+- Porta do banco: `5432`
+- Porta do backend: `3001`
+- Porta do frontend: `3000`
+
 2. Suba os serviços:
 
 ```bash
@@ -233,6 +242,14 @@ Fluxo sugerido para avaliação:
 cp backend/.env.example backend/.env
 ```
 
+Para execução local do backend, o projeto espera um PostgreSQL rodando com:
+
+- Banco: `recicla_entulhos`
+- Usuário: `postgres`
+- Senha: `postgres`
+- Host: `localhost`
+- Porta: `5432`
+
 2. Instale as dependências:
 
 ```bash
@@ -260,6 +277,10 @@ corepack pnpm start:dev
 ```bash
 cp frontend/.env.example frontend/.env.local
 ```
+
+O frontend consome a API em:
+
+- `http://localhost:3001/api`
 
 2. Instale as dependências:
 
